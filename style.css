@@ -1,0 +1,22 @@
+* {
+    transition: all 200ms;
+}
+
+.button {
+    width: 50px;
+    cursor: pointer;
+    filter: grayscale(100%); 
+    filter: saturate(3); 
+    border-radius: 100%;
+    padding: 10px;
+}
+
+.button:hover { 
+    filter: opacity(50%); 
+}
+
+.button:active {
+    filter: opacity(10%); 
+}
+
+

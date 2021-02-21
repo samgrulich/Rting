@@ -1,0 +1,41 @@
+{
+    "name": "Test",
+    "description": "description",
+    "version": "1.0.1",
+    "manifest_version": 2,
+    "background" : {
+        "scripts": ["./Scripts/bg.js"]
+    },
+    "content_scripts": [{
+        "matches": [
+            "http://*/*", 
+            "https://*/*"],
+        "exclude_globs": [
+            "http://localhost:*/*",
+            "http://127.0.0.1:*/public/*",
+            "https://sheldon-rating.web.app/*",
+            "https://sheldon-rating.firebaseapp.com/*"
+        ],
+        "js": ["./Scripts/content.js"],
+        "run_at": "document_end"
+    },
+    {
+        "matches": [
+            "http://localhost:*/*",
+            "https://sheldon-rating.web.app/*",
+            "https://sheldon-rating.firebaseapp.com/*"
+        ],
+        "js": ["./Scripts/saving.js"],
+        "run_at": "document_end"
+    }],
+    "options_page": "./HTML/options.html",
+    "browser_action": {
+        "default_popup": "./HTML/index.html"
+    },
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "contextMenus",
+        "storage"
+    ]
+}
