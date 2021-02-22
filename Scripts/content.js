@@ -1,4 +1,5 @@
 const API_URL = 'https://rting.herokuapp.com/';
+// const API_URL = 'http://localhost:5501/';
 const port = chrome.runtime.connect({name: 'bg-content'});
 
 //POPUPS
@@ -30,18 +31,18 @@ iframe.style = `
 //MESSAGIGNG -w BG
 chrome.extension.onMessage.addListener(async (request, sender, sendResponse) => {
   const url = request.url.replaceAll('http://', '').replaceAll('https://', '').replaceAll('/', '%').replaceAll(':', '%1');
-  iframe.src = `${API_URL}rating?url=${url}`;
+  iframe.src = `${API_URL}?url=${url}`;
   
   const popup = await document.body.appendChild( iframe );
   
-  chrome.storage.local.get(['alldata'], (data) => {
-    //replace with opening port in iframe, then add here ev Listener for that port, when port oppened send data  
-    setTimeout(() => {  
+  popup.onload = () => {
+    chrome.storage.local.get(['alldata'], (data) => {
       popup.contentWindow.postMessage(data, '*');
-     }, 100);
-  })
+    })
+  };
   
   sendResponse({farewell: "goodbye"});
 });
 
 /* /w iframe */
+

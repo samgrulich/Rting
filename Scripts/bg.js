@@ -9,6 +9,6 @@ chrome.tabs.onUpdated.addListener(function(tabID, changeInfo, tab){
         port.onMessage.addListener(this.processMessage);
       }
     });
-      //open popup
+    //open popup
   }
 });
