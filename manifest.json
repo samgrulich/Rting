@@ -1,10 +1,16 @@
 {
-    "name": "Test",
-    "description": "description",
-    "version": "1.0.1",
+    "name": "Rting",
+    "description": "",
+    "version": "1.0.2",
     "manifest_version": 2,
     "background" : {
         "scripts": ["./Scripts/bg.js"]
+    },
+    "icons": {
+        "16": "./Pictures/icons/icon-16x16.png",
+        "32": "./Pictures/icons/icon-32x32.png",
+        "64": "./Pictures/icons/icon-64x64.png",
+        "128": "./Pictures/icons/icon-128x128.png"
     },
     "content_scripts": [{
         "matches": [
@@ -13,8 +19,7 @@
         "exclude_globs": [
             "http://localhost:*/*",
             "http://127.0.0.1:*/public/*",
-            "https://sheldon-rating.web.app/*",
-            "https://sheldon-rating.firebaseapp.com/*"
+            "https://rting.herokuapp.com/*"
         ],
         "js": ["./Scripts/content.js"],
         "run_at": "document_end"
@@ -22,8 +27,7 @@
     {
         "matches": [
             "http://localhost:*/*",
-            "https://sheldon-rating.web.app/*",
-            "https://sheldon-rating.firebaseapp.com/*"
+            "https://rting.herokuapp.com/*"
         ],
         "js": ["./Scripts/saving.js"],
         "run_at": "document_end"

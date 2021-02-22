@@ -1,4 +1,4 @@
-const API_URL = 'https://sheldon-rating.firebaseapp.com/';
+const API_URL = 'https://rting.herokuapp.com/';
 const port = chrome.runtime.connect({name: 'bg-content'});
 
 //POPUPS
