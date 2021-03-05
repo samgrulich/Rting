@@ -30,7 +30,7 @@ iframe.style = `
   
 //MESSAGIGNG -w BG
 chrome.extension.onMessage.addListener(async (request, sender, sendResponse) => {
-    const url = request.url.replaceAll('http://', '').replaceAll('https://', '').replaceAll('/', '%').replaceAll(':', '%1');
+    const url = request.url.replaceAll('http://', '').replaceAll('https://', '').replaceAll('/', '%').split('%')[0].replaceAll(':', '%1').replaceAll('.', '%2');
     iframe.src = `${API_URL}?url=${url}`;
     
     const popup = await document.body.appendChild( iframe );
